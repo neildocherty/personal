@@ -1,0 +1,108 @@
+.consoleWrapper {
+    position: fixed;
+    top: 100vh;
+    width: calc(100vw - 32px);
+    height: calc(100vh - 40px);
+    overflow-y: scroll;
+    padding-bottom: 40px;
+    z-index: 30;
+    padding: 16px;
+    opacity: 0;
+    background-color: #D8D8D8;
+    font-size: 1.2rem;
+
+    @include transition(opacity 100ms linear);
+    @include transition(all 400ms ease);
+
+    @include min-screen(600px) {
+        font-size: 1.2rem;
+        width: 80%;
+        margin: 0 10%;
+    }
+
+    &.visible {
+        top: 60px;
+        opacity: 1.0;
+    }
+
+    &.light {
+        background-color: $light;
+        color: $dark;
+
+        & cursor {
+            display: inline;
+            color: $dark;
+            &.on {
+                background-color: $dark;
+                color: $light;
+            }
+        }
+    }
+
+    &.dark {
+        background-color: $dark;
+        color: $light;
+
+        & cursor {
+            display: inline;
+            color: $light;
+            &.on {
+                background-color: $light;
+                color: $dark;
+            }
+        }
+    }
+
+
+ & .content {
+     margin-bottom: 40px;
+ }
+
+}
+
+
+
+
+prompt {
+    margin: 8px 0px;
+    display: inline-flex;
+}
+
+inputdisplay {
+    display: inline-flex;
+    cursor: text;
+}
+
+
+pre{
+    white-space: pre-wrap;
+}
+
+
+input {
+    width: 0px;
+    opacity: 0;
+    white-space: pre;
+}
+
+prestring, cursor, poststring {
+    white-space: pre;
+}
+
+prompttext {
+    color: #ffca28;
+}
+
+
+
+
+.console--ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.console--pre {
+    margin: 0;
+    padding: 0;
+}

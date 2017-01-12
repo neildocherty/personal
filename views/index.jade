@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    #mainWrapper.mainWrapper.dark
+      #content.content.row
+        div
+          div
+            // <h3 class="typed">123</h3>
+            h4#my_box.head Hey — it’s me, Neil
+            p.scramble
+              | I’m a self taught
+              span.whatDaFunc(data-call='fontend') frontend web developer
+              |  and I'm looking to join an awesome team with whom I can build great things.
+        div
+          div
+            h4.subhead.typr ABOUT
+            div
+              p.scramble
+                | At present, I teach kids about physics and science. I occasionally empart some wisdom.
+              p.scramble I have an honours degree in astrophyiscs
+              p.scramble
+                | Born and raised in Scotland, I find myself spending more and more time in Switzerland. Now, I'm searching for a job there.
+        div
+          div
+            h4.subhead.typr PROJECTS
+            // <p class="scramble">Here are some projects I’ve worked on recently -</p>
+            ul#projectList.projectList
+              div
+                a(class='link' href='http://www.meikeramon.com', target='_blank') Website - MeikeRamon
+              div
+                a(class='link' href='http://ubiquitous-quote.herokuapp.com', target='_blank') Quote Generator
+              div
+                a(class='link' href='https://rawgit.com/neildocherty/conwaysGameOfLife/master/index.html', target='_blank') Conway’s Game of life
+    #consoleWrapper.consoleWrapper.dark
+      #consoleContent.content
+
+    script(src='js/main.js')
+    script(src='js/typr.js')
+    script(src='js/scramble.js')
+    script(src='js/console.js')

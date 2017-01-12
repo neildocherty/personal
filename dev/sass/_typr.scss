@@ -1,0 +1,12 @@
+.typr {
+    opacity: 0.0;
+}
+span.cursor {
+    border-bottom: 2px solid rgba(255,255,255,.5);
+    animation: blinkyblinker 0.8s linear infinite;
+}
+
+
+@keyframes blinkyblinker {
+    50% { opacity: 0.0; }
+}
