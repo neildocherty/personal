@@ -26,8 +26,8 @@ function typr(target,prefix,speed) {
   if( prefix ) {
   // add '>' element to the target
   let pre = document.createElement('div');
-      pre.classList.add('pre');
-      pre.innerHTML = prefix+"&nbsp";
+      pre.classList.add('pre','pre-anim');
+      pre.innerHTML = prefix;
   target.appendChild(pre)
   }
 
@@ -54,7 +54,7 @@ function typr(target,prefix,speed) {
     if ( string.length === 0 ) {
       cursor.remove();
       text.innerHTML = originalString;
-      // target.classList.remove('typr','visible');
+      target.firstChild.classList.remove('pre-anim');
       return;
     }
 

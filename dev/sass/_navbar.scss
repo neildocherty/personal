@@ -3,20 +3,20 @@
     top: 0px;
     width: 100%;
     background-color: $dark;
-    // @include box-shadow(0px, 32px, 20px, 0px, rgba(255,255,255,0.6));
 }
 
 .navbar {
     display: flex;
     height: 60px;
-    // background-color: #FFF;
     justify-content: space-between;
     align-items: center;
     margin: 0 10%;
     widows: 80%;
     color: $light;
-    font-weight: 500;
-    font-size: $h3-fontsize;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: $h4-fontsize;
     border-bottom: 0px solid #FFF;
     @include transition(all 400ms ease);
 

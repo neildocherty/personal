@@ -30,6 +30,24 @@
 	transform: $transforms;
 }
 
+@mixin column-count($number) {
+	-webkit-column-count: $number;
+	-moz-column-count: $number;
+	-ms-column-count: $number;
+	column-count: $number;
+}
+
+@mixin flex(){
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+}
 
 @mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
   @if $inset {

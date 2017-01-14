@@ -40,7 +40,7 @@ List all projects with links,
 add a numerical index before each item,
 
 */
-let projectList = document.getElementById('projectList').children;
+let listOfProjects = document.getElementById('projectList').children;
 
 countr()
 
@@ -49,9 +49,9 @@ function countr() {
   const TYPE_RANDOM_MAX = 100;
   const TYPE_RANDOM_MIN = 10;
 
-  for (let i = 0 ; i < projectList.length ; i++){
+  for (let i = 0 ; i < listOfProjects.length ; i++){
 
-    let project = projectList[i];
+    let project = listOfProjects[i];
     let content = project.innerHTML;
 
     project.innerHTML = '';
@@ -101,6 +101,12 @@ function countr() {
         text.innerHTML = content;
         text.classList.add('text');
         project.appendChild(text)
+
+        let underline = document.createElement('span');
+        underline.innerHTML = '';
+        underline.classList.add('underline');
+        project.appendChild(underline)
+
         typr(text,'',40)
         return;
       }
