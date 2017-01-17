@@ -2,20 +2,23 @@
     position: fixed;
     top: 100vh;
     width: calc(100vw - 32px);
-    height: calc(100vh - 40px);
+    height: calc(100vh - 80px);
     overflow-y: scroll;
-    padding-bottom: 40px;
+    margin-bottom: 40px;
     z-index: 30;
     padding: 16px;
     opacity: 0;
-    border: 1px solid #D8D8D8;
     color: #fff;
     font-size: 1.2rem;
+    font-weight: 500;
+    border-top: 8px solid rgba(215,215,215,.1);
 
     @include transition(opacity 100ms linear);
     @include transition(all 400ms ease);
 
     @include min-screen(600px) {
+        border: 8px solid rgba(215,215,215,.1);
+        border-top: 32px solid rgba(215,215,215,.1);
         font-size: 1.2rem;
         width: 80%;
         margin: 0 10%;
@@ -59,13 +62,14 @@
      margin-bottom: 40px;
  }
 
+
 }
 
 
 
 
 prompt {
-    margin: 8px 0px;
+    margin: 4px 0px;
     display: inline-flex;
 }
 
@@ -90,9 +94,9 @@ prestring, cursor, poststring {
     white-space: pre;
 }
 
-prompttext {
-    color: #ffca28;
-}
+// prompttext {
+//     color: #ffca28;
+// }
 
 
 
@@ -106,4 +110,33 @@ prompttext {
 .console--pre {
     margin: 0;
     padding: 0;
+}
+
+.col-red{
+    color: #CC6666;
+}
+.col-yellow {
+    color: #F0C674;
+}
+.col-orange {
+    color: #DE935F;
+}
+.col-green {
+    color: #81A2BE;
+}
+.col-blue{
+    color: #81A2BE;
+}
+
+
+table {
+    text-align: left;
+
+    & .command {
+        width: 100px;
+    }
+
+    & .instruction {
+        color: rgba(255,255,255,.5);
+    }
 }

@@ -2,11 +2,11 @@ let targets = document.querySelectorAll('.typr');
 // typr();
 let head = document.querySelectorAll('.head');
 
-typr(head[0],">",80)
+typr(head[0],"",80)
 
 
 targets.forEach(function(el){
-  typr(el,"·",200)
+  typr(el,">",200)
 })
 
 

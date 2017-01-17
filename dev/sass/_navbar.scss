@@ -10,15 +10,20 @@
     height: 60px;
     justify-content: space-between;
     align-items: center;
-    margin: 0 10%;
-    widows: 80%;
+    padding: 0 10%;
+    width: 80%;
     color: $light;
     font-weight: 300;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-size: $h4-fontsize;
     border-bottom: 0px solid #FFF;
     @include transition(all 400ms ease);
+
+    @include min-screen(500px) {
+            padding: 0px 20%;
+            width: 60%;
+    }
 
     &.border {
         border-bottom: 1px solid #363636;

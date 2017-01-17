@@ -46,6 +46,10 @@
     -webkit-align-items: center;
     -webkit-box-align: center;
 
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+
     align-items: center;
 }
 

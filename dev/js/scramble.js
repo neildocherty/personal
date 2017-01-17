@@ -52,10 +52,10 @@ function scramble(element , speed ){
     let y = random(8,0);
     switch (y) {
       case (0):
-        block += "░";
+        block += " ";
         break;
       case (1):
-        block += "░";
+        block += "-";
         break;
       case (2):
         block += "-";
@@ -67,7 +67,7 @@ function scramble(element , speed ){
         block += " ";
         break;
       case (5):
-        block += " ";
+        block += "·";
         break;
       case (6):
         block += "×";
@@ -122,7 +122,7 @@ function scramble(element , speed ){
       element.innerHTML = originalContent;
       element.classList.remove("scramble");
       element.classList.add("complete");
-      element.style.height = "";
+      element.style.height = "auto";
       return;
     }
 

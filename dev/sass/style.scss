@@ -21,8 +21,10 @@ strong {
 }
 .mainWrapper {
     width: 100vw;
-    padding-top: 60px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     @include transition(all 200ms ease);
+
 
     &.hidden {
         display: none;
@@ -79,16 +81,19 @@ strong {
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
+    color: #F0C674;
 }
 
 .subhead {
-    font-size: $h5-fontsize;
+    font-size: 1.2rem;
     line-height: 110%;
     margin: ($h4-fontsize * 3) 0 ($h4-fontsize) 0;
     font-weight: 300;
     letter-spacing: 2px;
+    // color: #414141;
+    color: #F0C674;
     text-transform: uppercase;
-    opacity: 0.4;
+    // opacity: 0.8;
 }
 .pre {
     float: left;
@@ -166,5 +171,7 @@ strong {
 }
 
 .flex-container {
-    @include flex();
+    @include min-screen(600px) {
+        @include flex();
+    }
 }

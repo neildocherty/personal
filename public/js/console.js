@@ -1,3 +1,10 @@
+// Check if the browser is Safari and remove the console functionality.
+// Bug with safari
+if(/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor)){
+  document.getElementById('terminalButton').remove();
+  console.warn("This site is best viewed using Chrome");
+}
+
 let cursor,
     input,
     input_display,
@@ -8,18 +15,64 @@ let cursor,
     command,
     curr_dir = 'usr/home'
 
-let helpUtil = [
-  'command    details',
-  '-------    -------',
-  'cd         change directory, eg cd <directory>',
-  'clear      clear the screen',
-  'echo       print text to screen, eg echo <text>',
-  'help       display this message',
-  'ls         list directory contents',
-  'read       print file contents, eg read <file>',
-  'reload     reload window',
-  'version    display version'
-]
+// let helpUtil = [
+//   'command    details',
+//   '-------    -------',
+//   'cd         change directory, eg cd <directory>',
+//   'clear      clear the screen',
+//   'echo       print text to screen, eg echo <text>',
+//   'help       display this message',
+//   'ls         list directory contents',
+//   'read       print file contents, eg read <file>',
+//   'reload     reload window',
+// ]
+let helpUtil = `<table class="">
+  <tr>
+    <th class="command">command</th>
+    <th class="details">details</th>
+  </tr>
+  <tr>
+    <td class="col-yellow">cd</td>
+    <td class="">change directory</td>
+  </tr>
+  <tr>
+    <td class=""> </td>
+    <td class="instruction">cd &ltfolder&gt, eg. "cd files"</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">clear</td>
+    <td class="">clear the screen</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">echo</td>
+    <td class="">print text to screen</td>
+  </tr>
+  <tr>
+    <td class=""> </td>
+    <td class="instruction">echo &lttext&gt, eg. "echo hello world"</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">help</td>
+    <td class="">display this message</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">ls</td>
+    <td class="">list directory contents</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">read</td>
+    <td class="">print file contents</td>
+  </tr>
+  <tr>
+    <td class=""> </td>
+    <td class="instruction">read &ltfile&gt, eg. "read about.txt"</td>
+  </tr>
+  <tr>
+    <td class="col-yellow">reload</td>
+    <td class="">reload window</td>
+  </tr>
+</table>`
+
 
 let directory = [] // contains all files and folders that mock a file system
 
@@ -89,13 +142,13 @@ function printLoading(){
       pc += Math.floor(Math.random() * (15 - 5)) + 5;
       pc = (pc>=100) ? 100 : pc;
       bar = '';
-      for ( var i = 0 ; i < Math.floor(pc/5); i+=1) { bar += '▓' };
-      for ( var i = 0 ; i < 20-Math.floor(pc/5); i+=1) { bar += '░' };
+      for ( var i = 0 ; i < Math.floor(pc/2); i+=1) { bar += '▓' };
+      for ( var i = 0 ; i < 50-Math.floor(pc/2); i+=1) { bar += '-' };
 
-      let txt = 'loading: '+bar+' '+pc+'%'
+      let txt = 'loading:<br>'+bar+'<br>'+pc+'%'
       document.getElementById('console--loader').innerHTML = txt
       if (pc < 100){
-        loadTimer = setTimeout( load , Math.floor(Math.random() * (250 - 100)) + 100 ) // prod
+        loadTimer = setTimeout( load , Math.floor(Math.random() * (300 - 60)) + 60 ) // prod
         // loadTimer = setTimeout( load , Math.floor(Math.random() * (10 - 0)) + 0 ) // dev
       }
       else {
@@ -128,6 +181,7 @@ function initInput(){
       blinkOff()
       blink()
     }
+    scrollToBottom()
 }
 
 
@@ -160,6 +214,7 @@ function initTyping(){
     document.getElementsByTagName('input')[0].onkeydown = function typing(evt){
 
     cursor.classList.add('on')
+    console.log(evt);
     switch (evt.key) {
 
       case "Control":
@@ -366,9 +421,10 @@ function processInput(input){
     case "help":
     case "--help":
     case "--h":
-      helpUtil.forEach(function(el){
-        displayResponse(el)
-      })
+      // helpUtil.forEach(function(el){
+      //   displayResponse(el)
+      // })
+      displayResponse(helpUtil)
       break
 
     case "version":
@@ -394,11 +450,13 @@ function displayResponse(res){
 
   if (typeof res === 'string'){
       let pre = document.createElement('pre')
-      let text = document.createTextNode(res)
-      pre.appendChild(text)
+      // let text = document.createTextNode(res)
+      // pre.appendChild(text)
+
+      pre.innerHTML = res
       pre.className = 'console--pre'
       document.getElementById('consoleContent').appendChild(pre)
-      scrollToBottom(document.getElementById('consoleContent'))
+      scrollToBottom()
   }
   else if (Array.isArray(res)){
       listResponse(res)
@@ -421,8 +479,7 @@ function listResponse(array){
   ul.className = 'console--ul'
   array.forEach(function(e){
     let li = document.createElement('li')
-    let tx = document.createTextNode(e)
-    li.appendChild(tx)
+    li.innerHTML = e;
     ul.appendChild(li)
   })
   document.getElementById('consoleContent').appendChild(ul)
@@ -442,6 +499,7 @@ function displaySudo(array){
 
 
 function newPrompt( ){
+
   let path = ''
 
   // curr_dir.forEach(function(e){
@@ -453,8 +511,10 @@ function newPrompt( ){
   let prompt = document.createElement('prompt')
   let prompttext = document.createElement('prompttext')
   let path_el = document.createElement('path')
-  let text_node = document.createTextNode('$guest~ '+path[path.length-1]+' ')
-  path_el.appendChild(text_node)
+  // let text_node = document.createTextNode('<span class="col-red">guest</span>:~'+path[path.length-1]+' ')
+  // path_el.appendChild(text_node)
+
+  path_el.innerHTML = '<span class="col-orange">guest</span>@<span class="col-red">nd</span>:<span class="col-green">'+path[path.length-1]+'</span> '
   // let usr = document.createElement('usr')
   // text_node = document.createTextNode('guest')
   // usr.appendChild(text_node)
@@ -485,12 +545,14 @@ function newPrompt( ){
   document.getElementById('consoleContent').appendChild(prompt)
 
   initInput()
+  scrollToBottom()
+
 }
 
 
 
 function printWelcome(){
-  let txt = 'For a list of commands, type \'help\'.'
+  let txt = `====================================<br>For a list of commands, type \'<span class="col-yellow">help</span>\'.<br>====================================`
   displayResponse(txt)
 }
 
@@ -510,32 +572,29 @@ class Folder{
   }
 }
 
-
+// Home directory
 directory.push(new Folder('home','usr'))
+
+    // Files directory
     directory.push(new Folder('files','usr/home'))
+
     directory.push(new File(
       'about',
       '',
       'usr/home',
-`I've created this terminal-like interface to provide an alternative way of exploring content.
-
+      `I've created this terminal-like interface to provide an alternative way of exploring content.
 You can navigate the folders using the "cd" command. For example, "cd files/misc" or "cd ..".
-
-There are additional functions available. To view them, type "help".`
+There are some additional functions available. To view them, type "<span class="col-yellow">help</span>".`
 ))
-    directory.push(new File(
-      'one',
-      '',
-      `usr/home`,
-      `Curabitur aliquet quam id dui posuere blandit. Nulla porttitor accumsan tincidunt. Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta. Nulla quis lorem ut libero malesuada feugiat.
 
-Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.`))
-    directory.push(new File('two','','usr/home'))
-
+    // Misc directory
     directory.push(new Folder('misc','usr/home'))
-        directory.push(new Folder('A','usr/home/misc'))
-        directory.push(new Folder('B','usr/home/misc'))
-        directory.push(new File('file_three','','usr/home/misc'))
+      directory.push(new File(
+        'lipsum',
+        '',
+        `usr/home/misc`,
+        `Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.`))
+
 
 let filteredArray =[]
 
@@ -594,7 +653,7 @@ function ls(path){
       return
     }
     else {
-      displayResponse('ls: '+path+'/'+name+': No such directory')
+      displayResponse('<span class="col-red">ls</span>: '+path+'/'+name+': No such directory')
       return
     }
   }
@@ -661,8 +720,8 @@ function read(path){ // takes a string (eg. 'usr/home/files/about.txt')
 
 }
 
-function scrollToBottom(elem){
-  elem.scrollTop = elem.scrollHeight;
+function scrollToBottom(){
+  document.getElementById('consoleWrapper').scrollTop = document.getElementById('consoleContent').scrollHeight;
 }
 
 
