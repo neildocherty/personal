@@ -556,6 +556,11 @@ function printWelcome(){
   displayResponse(txt)
 }
 
+
+/*
+    This section deals with the 'files' in the console directory.
+*/
+
 class File{
   constructor(name, type, path, content){
     this.name = name

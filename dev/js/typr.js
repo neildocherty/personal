@@ -1,4 +1,4 @@
-let targets = document.querySelectorAll('.typr');
+let targets = Array.prototype.slice.call(document.querySelectorAll(".typr"));
 // typr();
 let head = document.querySelectorAll('.head');
 
