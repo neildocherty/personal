@@ -7,14 +7,6 @@ window.onscroll = function(){
   }
 }
 
-function jailbreak() {
-  let input = pre_string.innerHTML + cursor.innerHTML + pos_string.innerHTML;
-  input_display.innerHTML = input;
-  displayResponse(`Well, it was mentioned in the national media... It involved a casino, a luxury yacht, the Spanish Navy, A CASTLE(!) and roughly half-million in currency. It was pretty sweet. Drop me an email if you want to know more.  neilmdocherty@gmail.com`);
-  newPrompt();
-}
-
-
 
 document.getElementById('terminalButton').addEventListener('click',function(){
   let consoleWrapper = document.getElementById('consoleWrapper');
@@ -29,8 +21,6 @@ document.getElementById('terminalButton').addEventListener('click',function(){
   }
 
 })
-//
-
 
 /*
 ————————————

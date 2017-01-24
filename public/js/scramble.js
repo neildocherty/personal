@@ -1,6 +1,6 @@
 'use strict'
 
-let scrambleTargets = document.querySelectorAll('.scramble')
+let scrambleTargets = Array.prototype.slice.call(document.querySelectorAll(".scramble"))
 
 // targets.forEach(function(target){
 //   target.addEventListener('click', function(){

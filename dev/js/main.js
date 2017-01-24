@@ -21,8 +21,6 @@ document.getElementById('terminalButton').addEventListener('click',function(){
   }
 
 })
-//
-
 
 /*
 ————————————
