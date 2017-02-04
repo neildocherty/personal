@@ -132,6 +132,11 @@ strong {
     100% { opacity: 1.0; }
 }
 
+.note {
+    font-size: 1.0rem;
+    text-transform: uppercase;
+    color: #5D5F67;
+}
 
 .projectList {
     @include column-count(1);

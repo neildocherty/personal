@@ -579,10 +579,6 @@ class Folder{
 
 // Home directory
 directory.push(new Folder('home','usr'))
-
-    // Files directory
-    directory.push(new Folder('files','usr/home'))
-
     directory.push(new File(
       'about',
       '',
@@ -592,13 +588,66 @@ You can navigate the folders using the "cd" command. For example, "cd files/misc
 There are some additional functions available. To view them, type "<span class="col-yellow">help</span>".`
 ))
 
+    // Files directory
+    directory.push(new Folder('files','usr/home'))
+      directory.push(new File(
+        'about_me',
+        '',
+        `usr/home/files`,
+        `
+I have taught physics for four years. It's a good job but not one that I'm challenged by.
+
+During my time at university, I built some simple websites. I enjoyed it. Yet, I never considered it as a career.
+
+While teaching, I spent a lot of time making a website to help my students learn and to complete online homework. I enjoyed it. Still, I never considered it as a career.
+
+For the second time, a year after first meeting her, I met the love of my life. She lived in Switzerland and I in Scotland. I wanted to be closer to her so that had to change.
+
+Hours could pass while I worked away, coding and designing. I had fallen in love with design and coding without knowing it. I realised that it had been my passion all along.
+
+Now, things were begining to come together. A plan. Incomplete - perhaps - but a plan none the less. I would move to Switzerland and work toward becoming a web developer.
+
+It's a crazy plan but an exciting one!
+
+If you can help with my plan, I'd love to hear from you. You can email me at neilmdocherty@gmail.com.
+
+`))
+      directory.push(new File(
+        'jailbreak',
+        '',
+        `usr/home/files`,
+        `
+While at university in Glasgow, I was involved in a jailbreak. A peculiar event, to say the least. One that made national news.
+
+It involved 300,000 in currency, a casino, a luxury yacht, the Spanish Navy, and kilts. There may have also been some sword-fighting and a castle. Best of all, it's all true and it was for a good cause.
+
+If you want to know more feel free to ask. You can email me at neilmdocherty@gmail.com.
+
+`))
+
     // Misc directory
     directory.push(new Folder('misc','usr/home'))
       directory.push(new File(
-        'lipsum',
+        'short_stories',
         '',
         `usr/home/misc`,
-        `Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.`))
+        `
+Here are six six-word stories.
+Some bad, some not so bad.
+
+· She pursued him longingly. Got arrested.
+
+· To Mars, on ships. None returned.
+
+· He persued her longlingly. Got arrested.
+
+· We sat. Forever. Awaiting their return.
+
+· Her stomach grumbled. She wasn't hungry.
+
+· They made contact. We never knew.
+
+`))
 
 
 let filteredArray =[]
