@@ -613,6 +613,14 @@ If you can help with my plan, I'd love to hear from you. You can email me at nei
 
 `))
       directory.push(new File(
+        'deutsch',
+        '',
+        `usr/home/files`,
+        `
+Ich lerne Deutsch. Ich möchte wirklich gut bekommen.
+
+`))
+      directory.push(new File(
         'jailbreak',
         '',
         `usr/home/files`,
