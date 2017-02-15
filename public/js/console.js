@@ -1,8 +1,8 @@
-// Check if the browser is Safari and remove the console functionality.
-// Bug with safari
-if(/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor)){
+// Check if the browser is Safari, or Android and remove the console functionality.
+// keyboardEvent.key incompatibility with safari and android
+if(/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor) || /Android/.test(navigator.userAgent)){
   document.getElementById('terminalButton').remove();
-  console.warn("This site is best viewed using Chrome");
+  console.warn("This site is best viewed on desktop with Chrome");
 }
 
 let cursor,
@@ -211,7 +211,7 @@ function focusOnInput(){
 
 
 function initTyping(){
-    document.getElementsByTagName('input')[0].onkeydown = function typing(evt){
+    document.getElementsByTagName('input')[0].onkeyup = function typing(evt){
 
     cursor.classList.add('on')
     console.log(evt);
